@@ -1,5 +1,3 @@
-
-
 import 'package:fedis/models/register_response_model.dart';
 
 abstract class RegisterStates {}

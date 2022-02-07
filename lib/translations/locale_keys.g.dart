@@ -30,5 +30,10 @@ abstract class  LocaleKeys {
   static const HomeScreen_pInvoices = 'HomeScreen_pInvoices';
   static const HomeScreen_unpInvoices = 'HomeScreen_unpInvoices';
   static const HomeScreen_producsActive = 'HomeScreen_producsActive';
+  static const LoginScreen_emailValidate1 = 'LoginScreen_emailValidate1';
+  static const LoginScreen_emailValidate2 = 'LoginScreen_emailValidate2';
+  static const LoginScreen_passwordValidate = 'LoginScreen_passwordValidate';
+  static const RegisterScreen_Validate = 'RegisterScreen_Validate';
+
 
 }

@@ -1,8 +1,5 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
-import 'package:country_picker/country_picker.dart';
 import 'package:easy_localization/src/public_ext.dart';
-import 'package:fedis/layout/home_screen/home_screen.dart';
-import 'package:fedis/modules/login_screen/login_screen.dart';
 import 'package:fedis/shared/components/components.dart';
 import 'package:fedis/shared/styles/color.dart';
 import 'package:fedis/translations/locale_keys.g.dart';
@@ -50,14 +47,14 @@ class RegisterScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        '${LocaleKeys.RegisterScreen_title.tr()}',
+                        LocaleKeys.RegisterScreen_title.tr(),
                         style: Theme.of(context)
                             .textTheme
                             .headline4
                             ?.copyWith(color: Colors.black),
                       ),
                       Text(
-                        '${LocaleKeys.RegisterScreen_title1.tr()}',
+                        LocaleKeys.RegisterScreen_title1.tr(),
                         style: Theme.of(context).textTheme.bodyText1!.copyWith(
                               color: Colors.grey,
                             ),
@@ -77,11 +74,12 @@ class RegisterScreen extends StatelessWidget {
                                   vertical: 10, horizontal: 10),
                               validate: (String? value) {
                                 if (value!.isEmpty) {
-                                  return 'please enter your first name';
+                                  return LocaleKeys.RegisterScreen_Validate
+                                      .tr();
                                 }
                                 return null;
                               },
-                              label: '${LocaleKeys.RegisterScreen_Fname.tr()}',
+                              label: LocaleKeys.RegisterScreen_Fname.tr(),
                               picon: Icons.person,
                             ),
                           ),
@@ -96,11 +94,12 @@ class RegisterScreen extends StatelessWidget {
                                   vertical: 10, horizontal: 10),
                               validate: (String? value) {
                                 if (value!.isEmpty) {
-                                  return 'please enter your last name';
+                                  return LocaleKeys.RegisterScreen_Validate
+                                      .tr();
                                 }
                                 return null;
                               },
-                              label: '${LocaleKeys.RegisterScreen_Lname.tr()}',
+                              label: LocaleKeys.RegisterScreen_Lname.tr(),
                               picon: Icons.person,
                             ),
                           ),
@@ -116,7 +115,7 @@ class RegisterScreen extends StatelessWidget {
                             vertical: 10, horizontal: 10),
                         validate: (String? value) {
                           if (value!.isEmpty) {
-                            return 'please enter your email address';
+                            return LocaleKeys.RegisterScreen_Validate.tr();
                           }
                           if (value.length < 5 ||
                               !value.contains('@') ||
@@ -125,7 +124,7 @@ class RegisterScreen extends StatelessWidget {
                           }
                           return null;
                         },
-                        label: '${LocaleKeys.RegisterScreen_Email.tr()}',
+                        label: LocaleKeys.RegisterScreen_Email.tr(),
                         picon: Icons.email_outlined,
                       ),
                       const SizedBox(
@@ -134,44 +133,46 @@ class RegisterScreen extends StatelessWidget {
                       IntlPhoneField(
                         cursorColor: Colors.black,
                         controller: phoneController,
-                        autovalidateMode: AutovalidateMode.disabled,
-                        validator: null,
                         onCountryChanged: (country) {
                           countryController.text = country.code;
+                        },
+                        autovalidateMode: AutovalidateMode.disabled,
+                        validator: (String? value) {
+                          if (value!.isEmpty) {
+                            return LocaleKeys.RegisterScreen_Validate.tr();
+                          }
+                          return null;
                         },
                         dropdownIcon: const Icon(
                           Icons.arrow_drop_down,
                           color: Colors.black,
                         ),
                         decoration: InputDecoration(
-                          labelText: '${LocaleKeys.RegisterScreen_mobile.tr()}',
-                          border: OutlineInputBorder(
+                          labelText: LocaleKeys.RegisterScreen_mobile.tr(),
+                          border: const OutlineInputBorder(
                             borderSide: BorderSide(),
                           ),
-                          contentPadding: EdgeInsets.symmetric(
+                          contentPadding: const EdgeInsets.symmetric(
                               vertical: 10, horizontal: 10),
                           focusColor: Colors.red,
-                          enabledBorder: OutlineInputBorder(
+                          enabledBorder: const OutlineInputBorder(
                             borderSide:
                                 BorderSide(color: Colors.black, width: 1.0),
                           ),
-                          focusedBorder: OutlineInputBorder(
+                          focusedBorder: const OutlineInputBorder(
                             borderSide:
                                 BorderSide(color: defaultColor, width: 1.0),
                           ),
                           //  border: OutlineInputBorder(),
-                          labelStyle: TextStyle(color: Colors.black),
+                          labelStyle: const TextStyle(color: Colors.black),
                         ),
                         initialCountryCode: 'EG',
-                        onChanged: (phone) {
-                          print(phone.completeNumber);
-                        },
                       ),
                       // const SizedBox(height: 15,),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Container(
+                          SizedBox(
                             width: 200,
                             child: defaultFormField(
                               controller: companyNameController,
@@ -179,12 +180,11 @@ class RegisterScreen extends StatelessWidget {
                               contentPadding: const EdgeInsets.symmetric(
                                   vertical: 10, horizontal: 10),
                               validate: null,
-                              label:
-                                  '${LocaleKeys.RegisterScreen_company.tr()}',
+                              label: LocaleKeys.RegisterScreen_company.tr(),
                               picon: Icons.business,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 5,
                           ),
                           Expanded(
@@ -193,9 +193,13 @@ class RegisterScreen extends StatelessWidget {
                               type: TextInputType.text,
                               contentPadding: const EdgeInsets.symmetric(
                                   vertical: 10, horizontal: 10),
-                              validate: null,
-                              label:
-                                  '${LocaleKeys.RegisterScreen_country.tr()}',
+                              validate: (String? value) {
+                                if (value!.isEmpty) {
+                                  return LocaleKeys.RegisterScreen_Validate.tr();
+                                }
+                                return null;
+                              },
+                              label: LocaleKeys.RegisterScreen_country.tr(),
                               picon: Icons.location_city,
                             ),
                           ),
@@ -209,8 +213,13 @@ class RegisterScreen extends StatelessWidget {
                         type: TextInputType.text,
                         contentPadding: const EdgeInsets.symmetric(
                             vertical: 10, horizontal: 10),
-                        validate: null,
-                        label: '${LocaleKeys.RegisterScreen_Street.tr()}',
+                        validate: (String? value) {
+                          if (value!.isEmpty) {
+                            return LocaleKeys.RegisterScreen_Validate.tr();
+                          }
+                          return null;
+                        },
+                        label: LocaleKeys.RegisterScreen_Street.tr(),
                         picon: Icons.location_on,
                       ),
                       const SizedBox(
@@ -220,15 +229,20 @@ class RegisterScreen extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Container(
+                          SizedBox(
                             width: 235,
                             child: defaultFormField(
                               controller: cityController,
                               type: TextInputType.text,
                               contentPadding: const EdgeInsets.symmetric(
                                   vertical: 10, horizontal: 10),
-                              validate: null,
-                              label: '${LocaleKeys.RegisterScreen_city.tr()}',
+                              validate: (String? value) {
+                                if (value!.isEmpty) {
+                                  return LocaleKeys.RegisterScreen_Validate.tr();
+                                }
+                                return null;
+                              },
+                              label: LocaleKeys.RegisterScreen_city.tr(),
                               picon: Icons.business,
                             ),
                           ),
@@ -242,8 +256,8 @@ class RegisterScreen extends StatelessWidget {
                               contentPadding: const EdgeInsets.symmetric(
                                   vertical: 10, horizontal: 10),
                               validate: null,
-                              lab: Text('${LocaleKeys.RegisterScreen_postcode.tr()}',
-                                  style: TextStyle(
+                              lab: Text(LocaleKeys.RegisterScreen_postcode.tr(),
+                                  style: const TextStyle(
                                       color: Colors.black,
                                       fontSize: 10,
                                       fontWeight: FontWeight.bold)),
@@ -264,11 +278,11 @@ class RegisterScreen extends StatelessWidget {
                             vertical: 10, horizontal: 10),
                         validate: (String? value) {
                           if (value!.isEmpty) {
-                            return 'please enter your state';
+                            return LocaleKeys.RegisterScreen_Validate.tr();
                           }
                           return null;
                         },
-                        label: '${LocaleKeys.RegisterScreen_state.tr()}',
+                        label: LocaleKeys.RegisterScreen_state.tr(),
                         picon: Icons.map,
                       ),
                       const SizedBox(
@@ -282,12 +296,12 @@ class RegisterScreen extends StatelessWidget {
                             height: 1.0,
                             color: defaultColor,
                           ),
-                          Spacer(),
+                          const Spacer(),
                           Text(
-                            '${LocaleKeys.RegisterScreen_addinfo.tr()}',
-                            style: TextStyle(fontWeight: FontWeight.bold),
+                            LocaleKeys.RegisterScreen_addinfo.tr(),
+                            style: const TextStyle(fontWeight: FontWeight.bold),
                           ),
-                          Spacer(),
+                          const Spacer(),
                           Container(
                             width: 100,
                             height: 1.0,
@@ -295,39 +309,40 @@ class RegisterScreen extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       DropdownButtonFormField(
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           focusColor: Colors.red,
-                          focusedErrorBorder: const OutlineInputBorder(
-                            borderSide: const BorderSide(
-                                color: defaultColor, width: 1.0),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(color: defaultColor, width: 1.0),
                           ),
-                          errorBorder: const OutlineInputBorder(
-                            borderSide: const BorderSide(
-                                color: defaultColor, width: 1.0),
+                          errorBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(color: defaultColor, width: 1.0),
                           ),
-                          enabledBorder: const OutlineInputBorder(
-                            borderSide: const BorderSide(
-                                color: Colors.black, width: 1.0),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(color: Colors.black, width: 1.0),
                           ),
-                          focusedBorder: const OutlineInputBorder(
-                            borderSide: const BorderSide(
-                                color: defaultColor, width: 1.0),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(color: defaultColor, width: 1.0),
                           ),
                           //  border: OutlineInputBorder(),
                           labelStyle: TextStyle(color: Colors.black),
                         ),
                         validator: (account) {
                           if (account == null) {
-                            return 'please select your account type';
+                            return LocaleKeys.RegisterScreen_Validate.tr();
                           }
+                          return null;
                         },
                         hint: Text(
-                          '${LocaleKeys.RegisterScreen_account.tr()}',
-                          style: TextStyle(color: Colors.black),
+                          LocaleKeys.RegisterScreen_account.tr(),
+                          style: const TextStyle(color: Colors.black),
                         ),
                         iconEnabledColor: Colors.black,
                         items: items.map((String items) {
@@ -336,12 +351,12 @@ class RegisterScreen extends StatelessWidget {
                             value: items,
                           );
                         }).toList(),
-                        icon: Icon(Icons.arrow_drop_down),
+                        icon: const Icon(Icons.arrow_drop_down),
                         onChanged: (newValue) {
                           accountType = newValue.toString();
                         },
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       defaultFormField(
@@ -351,17 +366,14 @@ class RegisterScreen extends StatelessWidget {
                             vertical: 10, horizontal: 10),
                         validate: (String? value) {
                           if (value!.isEmpty) {
-                            return 'please enter your national id';
-                          }
-                          if (value.length < 14) {
-                            return 'please enter a valid national id';
+                            return LocaleKeys.RegisterScreen_Validate.tr();
                           }
                           return null;
                         },
-                        label: '${LocaleKeys.RegisterScreen_ID.tr()}',
+                        label: LocaleKeys.RegisterScreen_ID.tr(),
                         picon: Icons.person,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       defaultFormField(
@@ -376,11 +388,11 @@ class RegisterScreen extends StatelessWidget {
                         },
                         validate: (String? value) {
                           if (value!.isEmpty) {
-                            return 'please enter your password';
+                            return LocaleKeys.RegisterScreen_Validate.tr();
                           }
                           return null;
                         },
-                        label: '${LocaleKeys.RegisterScreen_password.tr()}',
+                        label: LocaleKeys.RegisterScreen_password.tr(),
                         picon: Icons.lock_outline,
                       ),
 
@@ -406,13 +418,13 @@ class RegisterScreen extends StatelessWidget {
                                   lastName: lastNameController.text,
                                   companyName: companyNameController.text,
                                   accountType: accountType,
-                                  nationalId:nationalIdController.text,
+                                  nationalId: nationalIdController.text,
                                 );
                                 // navigatepush(context,  LoginScreen());
 
                               }
                             },
-                            text: '${LocaleKeys.RegisterScreen_button.tr()}',
+                            text: LocaleKeys.RegisterScreen_button.tr(),
                             isUpperCase: true),
                         fallback: (context) => const Center(
                             child: CircularProgressIndicator(

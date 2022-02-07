@@ -27,5 +27,9 @@
   "HomeScreen_at": "at",
   "HomeScreen_pInvoices": "PAID INVOICES",
   "HomeScreen_unpInvoices": "UNPAID INVOICES",
-  "HomeScreen_producsActive": "ACTIVE SERVICES"
+  "HomeScreen_producsActive": "ACTIVE SERVICES",
+  "LoginScreen_emailValidate1": "Please enter your registered email",
+  "LoginScreen_emailValidate2": "Please enter a valid email address",
+  "LoginScreen_passwordValidate": "Please enter your password",
+  "RegisterScreen_Validate": "This field is required"
 }

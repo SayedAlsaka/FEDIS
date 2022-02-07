@@ -31,8 +31,6 @@ class RegisterCubit extends Cubit<RegisterStates> {
     required String accountType,
     required String nationalId,
   }) async {
-    CustomFields customFields = CustomFields(nationalId, accountType);
-
 
     emit(RegisterLoadingState());
 
@@ -48,9 +46,9 @@ class RegisterCubit extends Cubit<RegisterStates> {
     if (postcode.isEmpty) {
       postcode = " ";
     }
-    if (phoneNumber.isEmpty) {
-      phoneNumber = " ";
-    }
+
+    print(int.parse(nationalId));
+    print(nationalId);
     print(accountType);
     var url = Uri.parse(URL);
     final response = await http.post(Uri.parse(URL), body: {
@@ -70,17 +68,19 @@ class RegisterCubit extends Cubit<RegisterStates> {
       'state': state,
       'postcode': postcode,
       'password2': password,
-      'customfields[1]':nationalId,
-      'customfields[2]':accountType,
+      'customfields':' ',
+      'customfield[8]':nationalId,
+      'customfield[9]':accountType,
     }).then((value) {
       print(value.body);
-      registerModel = RegisterResponseModel.fromJson(json.decode(value.body));
+     registerModel = RegisterResponseModel.fromJson(json.decode(value.body));
       print(registerModel.result);
       print(registerModel.clientId);
-      if (registerModel.result == 'success')
+      if (registerModel.result == 'success') {
         emit(RegisterSuccessState(registerModel));
-      else
+      } else {
         emit(RegisterErrorState(registerModel));
+      }
     }).catchError((error) {
       print(error.toString());
       emit(RegisterErrorState(error));
@@ -92,8 +92,7 @@ class RegisterCubit extends Cubit<RegisterStates> {
 
   void changePasswordVisibility() {
     isPassword = !isPassword;
-    suffix =
-        isPassword ? Icons.visibility_outlined : Icons.visibility_off_outlined;
+    suffix = isPassword ? Icons.visibility_outlined : Icons.visibility_off_outlined;
 
     emit(ChangePasswordShowState());
   }

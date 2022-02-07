@@ -27,5 +27,9 @@
   "HomeScreen_at": "الساعة",
   "HomeScreen_pInvoices": "فواتير مدفوعة",
   "HomeScreen_unpInvoices": "فواتير غير مدفوعة",
-  "HomeScreen_producsActive": "الخدمات النشطة"
+  "HomeScreen_producsActive": "الخدمات النشطة",
+  "LoginScreen_emailValidate1": "من فضلك ادخل البريد الالكتروني",
+  "LoginScreen_emailValidate2": "من فضلك ادخل بريد الكتروني صالح",
+  "LoginScreen_passwordValidate": "من فضلك ادخل كلمة السر",
+  "RegisterScreen_Validate": "هذا الحقل مطلوب"
 }

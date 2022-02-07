@@ -17,6 +17,8 @@ class RegisterRequestModel
   String? postCode;
   String? password;
   List<CustomFields>? customFields;
+  int? nationalId;
+  String? accountType;
 
 
   RegisterRequestModel(
@@ -36,7 +38,10 @@ class RegisterRequestModel
       this.state,
       this.postCode,
       this.password,
-      this.customFields);
+      this.customFields,
+      this.nationalId,
+      this.accountType
+      );
 
   RegisterRequestModel.fromJson(Map<String , dynamic> json )
   {
@@ -59,6 +64,8 @@ class RegisterRequestModel
     json['customfields'].forEach((element) {
       customFields!.add(CustomFields.fromJson(element));
     });
+    nationalId=json['customfield[8]'];
+    password=json['customfield[9]'];
   
   }
   toJson() {
@@ -79,7 +86,8 @@ class RegisterRequestModel
       'postcode': postCode,
       'password2': password,
       'customfields':customFields.toString(),
-
+      'customfield[8]':nationalId,
+      'customfield[9]':accountType,
     };
   }
 
@@ -89,7 +97,7 @@ class RegisterRequestModel
 
 class CustomFields
 {
-  String? id;
+  int? id;
   String? value;
 
 

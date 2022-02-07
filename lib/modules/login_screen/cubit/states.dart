@@ -2,7 +2,6 @@ import 'package:fedis/models/login_response_model.dart';
 
 abstract class LoginStates {}
 
-
 class LoginInitialState extends LoginStates{}
 
 class LoginLoadingState extends LoginStates{}
@@ -22,3 +21,10 @@ class LoginErrorState extends LoginStates
 }
 
 class ChangePasswordShowState extends LoginStates{}
+
+
+class ChangeLoadingLanguage extends LoginStates{}
+
+class ChangeLanguageSuccess extends LoginStates{}
+
+class ChangeLanguageError extends LoginStates{}

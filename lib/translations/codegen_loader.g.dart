@@ -43,7 +43,12 @@ class CodegenLoader extends AssetLoader{
   "HomeScreen_at": "الساعة",
   "HomeScreen_pInvoices": "فواتير مدفوعة",
   "HomeScreen_unpInvoices": "فواتير غير مدفوعة",
-  "HomeScreen_producsActive": "الخدمات النشطة"
+  "HomeScreen_producsActive": "الخدمات النشطة",
+  "LoginScreen_emailValidate1": "من فضلك ادخل البريد الالكتروني",
+  "LoginScreen_emailValidate2": "من فضلك ادخل بريد الكتروني صالح",
+  "LoginScreen_passwordValidate": "من فضلك ادخل كلمة السر",
+  "RegisterScreen_Validate": "هذا الحقل مطلوب",
+
 };
 static const Map<String,dynamic> en = {
   "LoginScreen_Email": "Email Address",
@@ -74,7 +79,12 @@ static const Map<String,dynamic> en = {
   "HomeScreen_at": "at",
   "HomeScreen_pInvoices": "PAID INVOICES",
   "HomeScreen_unpInvoices": "UNPAID INVOICES",
-  "HomeScreen_producsActive": "ACTIVE SERVICES"
+  "HomeScreen_producsActive": "ACTIVE SERVICES",
+  "LoginScreen_emailValidate1": "Please enter your registered email",
+  "LoginScreen_emailValidate2": "Please enter a valid email address",
+  "LoginScreen_passwordValidate": "Please enter your password",
+  "RegisterScreen_Validate": "This field is required",
+
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": ar, "en": en};
 }
