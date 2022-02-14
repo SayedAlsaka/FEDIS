@@ -1,6 +1,7 @@
 const LOGIN = 'ValidateLogin';
 const REGISTER = 'AddClient';
 const GETCLIENT = 'GetClientsDetails';
+const RESETPASSWORD = 'ResetPassword';
 
 
 const URL = 'https://client.fedis.io/includes/api.php';

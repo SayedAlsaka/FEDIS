@@ -1,7 +1,5 @@
 import 'dart:convert';
-
 import 'package:bloc/bloc.dart';
-import 'package:fedis/models/register_request_model.dart';
 import 'package:fedis/models/register_response_model.dart';
 import 'package:fedis/modules/register_screen/cubit/states.dart';
 import 'package:fedis/shared/network/end_points.dart';
@@ -69,7 +67,7 @@ class RegisterCubit extends Cubit<RegisterStates> {
       'postcode': postcode,
       'password2': password,
       'customfields':' ',
-      'customfield[8]':nationalId,
+      'customfield[8]':"298",
       'customfield[9]':accountType,
     }).then((value) {
       print(value.body);

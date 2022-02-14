@@ -1,3 +1,4 @@
+import 'package:bot_toast/bot_toast.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_localization/src/public_ext.dart';
@@ -5,6 +6,7 @@ import 'package:fedis/layout/home_screen/cubit/cubit.dart';
 import 'package:fedis/layout/home_screen/home_screen.dart';
 import 'package:fedis/modules/login_screen/cubit/states.dart';
 import 'package:fedis/modules/register_screen/register_screen.dart';
+import 'package:fedis/modules/reset_password/reset_password.dart';
 import 'package:fedis/modules/splash_screen/splash_screen.dart';
 import 'package:fedis/shared/components/components.dart';
 import 'package:fedis/shared/components/constants.dart';
@@ -52,7 +54,7 @@ class LoginScreen extends StatelessWidget {
                 .then((value) {
               clientId = CashHelper.getData(key: 'clientId');
               HomeCubit.get(context).getData();
-              navigateandFinish(context, HomeScreen());
+              navigateAndFinish(context, HomeScreen());
             });
           }
           if (state is LoginErrorState) {
@@ -82,7 +84,7 @@ class LoginScreen extends StatelessWidget {
               actions: [
                 MaterialButton(
                   onPressed: () {
-                   navigateandFinish(context,Splash());
+                   navigateAndFinish(context,const Splash());
                     formKey.currentState!.reset();
                      currentLanguage = CashHelper.getData(key: 'Language');
                     if (currentLanguage ==null)
@@ -118,7 +120,7 @@ class LoginScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(20.0),
                   child: Form(
                     key: formKey,
-                    child: Container(
+                    child: SizedBox(
                       width: 600,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -197,6 +199,17 @@ class LoginScreen extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
+                              defaultTextButton(
+                                  function: () {
+                                    navigatePush(context, ResetPassword());
+                                  },
+                                  text: LocaleKeys.LoginScreen_ResetPassword.tr()),
+                            ],
+                          ),
+                          //
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
                                Text(
                                 LocaleKeys.LoginScreen_NewAccount.tr(),
                                 style: const TextStyle(
@@ -205,7 +218,7 @@ class LoginScreen extends StatelessWidget {
                               ),
                               defaultTextButton(
                                   function: () {
-                                    navigatepush(context, RegisterScreen());
+                                    navigatePush(context, RegisterScreen());
                                     formKey.currentState!.reset();
                                     emailController.clear();
                                     passwordController.clear();

@@ -20,7 +20,7 @@ class HomeCubit extends Cubit<HomeStates> {
       'username': username,
       'password': passwordA,
       'accesskey': passwordA,
-      'clientid': '${clientId}',
+      'clientid': '$clientId',
       'responsetype':'json',
       'stats':'${true}',
     }).then((value) {
@@ -29,10 +29,11 @@ class HomeCubit extends Cubit<HomeStates> {
       print(clientModel.result);
       print(clientModel.stats!.numPaidInvoices);
 
-      if (clientModel.result == 'success')
+      if (clientModel.result == 'success') {
         emit(HomeGetClientDataSuccessState(clientModel));
-      else
+      } else {
         emit(HomeGetClientDataErrorState(clientModel));
+      }
 
     }).catchError((error){
       print(error.toString());

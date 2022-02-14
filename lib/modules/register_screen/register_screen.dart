@@ -368,6 +368,10 @@ class RegisterScreen extends StatelessWidget {
                           if (value!.isEmpty) {
                             return LocaleKeys.RegisterScreen_Validate.tr();
                           }
+                          if(value.length < 14)
+                            {
+                              return LocaleKeys.RegisterScreen_nationalIDValidate.tr();
+                            }
                           return null;
                         },
                         label: LocaleKeys.RegisterScreen_ID.tr(),

@@ -46,6 +46,7 @@ dependencies:
   intl_phone_field: ^3.0.1
   country_picker: ^2.0.10
   splash_screen_view: ^3.0.0
+  bot_toast: ^4.0.1
   easy_localization: ^3.0.0
   flutter_localizations:
     sdk: flutter

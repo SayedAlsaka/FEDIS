@@ -7,14 +7,14 @@ import 'package:flutter/material.dart';
 import '../../main.dart';
 import 'constants.dart';
 
-void navigatepush(context , widget) =>   Navigator.push(
+void navigatePush(context , widget) =>   Navigator.push(
   context,
   MaterialPageRoute(
     builder: (context) => widget,
   ),
 );
 
-void navigateandFinish(context , widget) =>
+void navigateAndFinish(context , widget) =>
 
     Navigator.pushAndRemoveUntil(
         context,
@@ -67,6 +67,7 @@ Widget defaultFormField({
   TextStyle? style,
 }) =>
     TextFormField(
+      textCapitalization: TextCapitalization.sentences,
       controller: controller,
       obscureText: isPassword,
       keyboardType: type,

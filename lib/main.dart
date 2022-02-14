@@ -14,6 +14,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'layout/home_screen/cubit/cubit.dart';
 import 'layout/home_screen/home_screen.dart';
 import 'shared/network/local/cash_helper.dart';
+import 'package:bot_toast/bot_toast.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -49,6 +50,8 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (BuildContext context) => HomeCubit()..getData())
       ],
       child: MaterialApp(
+        builder: BotToastInit(),
+        navigatorObservers: [BotToastNavigatorObserver()],
         localizationsDelegates: [
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,

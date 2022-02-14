@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:bloc/bloc.dart';
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:fedis/models/login_response_model.dart';
+import 'package:fedis/models/reset_response_model.dart';
 import 'package:fedis/modules/login_screen/cubit/states.dart';
 import 'package:fedis/shared/network/end_points.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +15,7 @@ class LoginCubit extends Cubit<LoginStates> {
   static LoginCubit get(context) => BlocProvider.of(context);
 
   late LoginResponseModel loginModel;
+  late ResetResponseModel resetModel;
 
   void userLogin({required String email, required String password,}) async{
     emit(LoginLoadingState());
@@ -47,6 +49,33 @@ class LoginCubit extends Cubit<LoginStates> {
   IconData suffix = Icons.visibility_outlined;
   bool isPassword = true;
 
+  void resetPassword(String email) async
+  {
+    emit(ResetLoadingPassword());
+    var url = Uri.parse(URL);
+    final response = await  http.post(Uri.parse(URL) , body: {
+      'action': RESETPASSWORD,
+      'username': username,
+      'password': passwordA,
+      'accesskey': passwordA,
+      'email': email,
+      'responsetype':'json',
+    }).then((value) {
+      print(value.body);
+      resetModel = ResetResponseModel.fromJson(json.decode(value.body));
+
+      if (resetModel.result == 'success') {
+
+        emit(ResetPasswordSuccess(resetModel));
+      } else {
+        emit(ResetPasswordError(resetModel));
+      }
+
+    }).catchError((error){
+      print(error.toString());
+      emit(LoginErrorState(error));
+    });
+  }
   void changePasswordVisibility()
   {
     isPassword = !isPassword;

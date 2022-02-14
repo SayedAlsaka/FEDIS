@@ -48,7 +48,11 @@ class CodegenLoader extends AssetLoader{
   "LoginScreen_emailValidate2": "من فضلك ادخل بريد الكتروني صالح",
   "LoginScreen_passwordValidate": "من فضلك ادخل كلمة السر",
   "RegisterScreen_Validate": "هذا الحقل مطلوب",
-
+  "RegisterScreen_nationalIDValidate": "من فضلك ادخل رقم قومي صحيح",
+  "LoginScreen_ResetPassword": "هل نسيت كلمة السر ؟",
+  "ResetPassword_Lost": "إعادة تعيين كلمة المرور",
+  "LostPassword_text": "ادخل بريدك الالكتروني ادناه لاعادة تعيين كلمة المرور",
+  "LostPassword_button": "ارسل"
 };
 static const Map<String,dynamic> en = {
   "LoginScreen_Email": "Email Address",
@@ -84,7 +88,11 @@ static const Map<String,dynamic> en = {
   "LoginScreen_emailValidate2": "Please enter a valid email address",
   "LoginScreen_passwordValidate": "Please enter your password",
   "RegisterScreen_Validate": "This field is required",
-
+  "RegisterScreen_nationalIDValidate": "National ID value is not valid",
+  "LoginScreen_ResetPassword": "Forgot Password ?",
+  "ResetPassword_Lost": "Lost Password Reset",
+  "LostPassword_text": "Enter your email address below to begin the reset process",
+  "LostPassword_button": "Submit"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ar": ar, "en": en};
 }

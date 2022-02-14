@@ -1,4 +1,5 @@
 import 'package:fedis/models/login_response_model.dart';
+import 'package:fedis/models/reset_response_model.dart';
 
 abstract class LoginStates {}
 
@@ -21,7 +22,19 @@ class LoginErrorState extends LoginStates
 }
 
 class ChangePasswordShowState extends LoginStates{}
+class ResetLoadingPassword extends LoginStates{}
 
+class ResetPasswordSuccess extends LoginStates{
+  final ResetResponseModel? resetModel;
+
+  ResetPasswordSuccess(this.resetModel);
+}
+
+class ResetPasswordError extends LoginStates{
+  final ResetResponseModel? resetModel;
+
+  ResetPasswordError(this.resetModel);
+}
 
 class ChangeLoadingLanguage extends LoginStates{}
 

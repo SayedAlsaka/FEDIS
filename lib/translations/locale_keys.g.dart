@@ -34,6 +34,10 @@ abstract class  LocaleKeys {
   static const LoginScreen_emailValidate2 = 'LoginScreen_emailValidate2';
   static const LoginScreen_passwordValidate = 'LoginScreen_passwordValidate';
   static const RegisterScreen_Validate = 'RegisterScreen_Validate';
-
+  static const RegisterScreen_nationalIDValidate = 'RegisterScreen_nationalIDValidate';
+  static const LoginScreen_ResetPassword = 'LoginScreen_ResetPassword';
+  static const ResetPassword_Lost = 'ResetPassword_Lost';
+  static const LostPassword_text = 'LostPassword_text';
+  static const LostPassword_button = 'LostPassword_button';
 
 }

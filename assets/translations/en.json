@@ -31,5 +31,10 @@
   "LoginScreen_emailValidate1": "Please enter your registered email",
   "LoginScreen_emailValidate2": "Please enter a valid email address",
   "LoginScreen_passwordValidate": "Please enter your password",
-  "RegisterScreen_Validate": "This field is required"
+  "RegisterScreen_Validate": "This field is required",
+  "RegisterScreen_nationalIDValidate": "National ID value is not valid",
+  "LoginScreen_ResetPassword": "Forgot Password ?",
+  "ResetPassword_Lost": "Lost Password Reset",
+  "LostPassword_text": "Enter your email address below to begin the reset process",
+  "LostPassword_button": "Submit"
 }

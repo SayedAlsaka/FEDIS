@@ -35,7 +35,7 @@ class HomeScreen extends StatelessWidget {
                       children: [
                         Text(
                           '${LocaleKeys.HomeScreen_welcome.tr()}, ',
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.black,
                             fontSize: 30.0,
                           ),
@@ -46,20 +46,20 @@ class HomeScreen extends StatelessWidget {
                               .clientModel
                               .fullName
                               .toString(),
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: Colors.black,
                               fontSize: 30.0,
                               fontWeight: FontWeight.bold),
                         ),
-                        Spacer(),
+                        const Spacer(),
                         IconButton(
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.logout,
                             size: 30,
                           ),
                           onPressed: () {
                             CashHelper.removeDate(key: 'clientId');
-                            navigateandFinish(context, LoginScreen());
+                            navigateAndFinish(context, LoginScreen());
                           },
                         ),
                       ],
@@ -137,7 +137,7 @@ class HomeScreen extends StatelessWidget {
                                         children: [
                                           Text(
                                             '${HomeCubit.get(context).clientModel.stats!.numPaidInvoices}',
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 fontSize: 60.0,
                                                 color: Color.fromRGBO(
                                                     51, 122, 183, 1.0)),
@@ -145,8 +145,8 @@ class HomeScreen extends StatelessWidget {
                                         ],
                                       ),
                                     ),
-                                     Text('${LocaleKeys.HomeScreen_pInvoices.tr()}',
-                                        style: TextStyle(
+                                     Text(LocaleKeys.HomeScreen_pInvoices.tr(),
+                                        style: const TextStyle(
                                             fontSize: 25.0, color: Colors.grey)),
                                   ],
                                 ),
@@ -192,7 +192,7 @@ class HomeScreen extends StatelessWidget {
                                         children:[
                                           Text(
                                             '${HomeCubit.get(context).clientModel.stats!.numUnPaidInvoices}',
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 fontSize: 60.0,
                                                 color: Color.fromRGBO(
                                                     51, 122, 183, 1.0)),
@@ -200,8 +200,8 @@ class HomeScreen extends StatelessWidget {
                                         ],
                                       ),
                                     ),
-                                     Text('${LocaleKeys.HomeScreen_unpInvoices.tr()}',
-                                        style: TextStyle(
+                                     Text(LocaleKeys.HomeScreen_unpInvoices.tr(),
+                                        style: const TextStyle(
                                             fontSize: 25.0, color: Colors.grey)),
                                   ],
                                 ),
@@ -246,7 +246,7 @@ class HomeScreen extends StatelessWidget {
                                         children:  [
                                           Text(
                                             '${HomeCubit.get(context).clientModel.stats!.productNumActive}',
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 fontSize: 60.0,
                                                 color: Color.fromRGBO(
                                                     51, 122, 183, 1.0)),
@@ -254,8 +254,8 @@ class HomeScreen extends StatelessWidget {
                                         ],
                                       ),
                                     ),
-                                     Text('${LocaleKeys.HomeScreen_producsActive.tr()}',
-                                        style: TextStyle(
+                                     Text(LocaleKeys.HomeScreen_producsActive.tr(),
+                                        style: const TextStyle(
                                             fontSize: 25.0, color: Colors.grey)),
                                   ],
                                 ),
@@ -269,8 +269,8 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
-            fallback: (BuildContext context) => Center(
-                child: const CircularProgressIndicator(
+            fallback: (BuildContext context) => const Center(
+                child: CircularProgressIndicator(
               color: defaultColor,
             )),
           ),
