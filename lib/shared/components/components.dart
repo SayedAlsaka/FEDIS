@@ -1,11 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:fedis/shared/components/constants.dart';
 import 'package:fedis/shared/network/local/cash_helper.dart';
 import 'package:fedis/shared/styles/color.dart';
 import 'package:fedis/translations/codegen_loader.g.dart';
 import 'package:flutter/material.dart';
 
 import '../../main.dart';
-import 'constants.dart';
+
 
 void navigatePush(context , widget) =>   Navigator.push(
   context,
