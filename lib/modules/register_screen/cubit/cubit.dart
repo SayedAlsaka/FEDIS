@@ -67,7 +67,7 @@ class RegisterCubit extends Cubit<RegisterStates> {
       'postcode': postcode,
       'password2': password,
       'customfields':' ',
-      'customfield[8]':"298",
+      'customfield[8]':nationalId,
       'customfield[9]':accountType,
     }).then((value) {
       print(value.body);

@@ -1,5 +1,6 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:easy_localization/src/public_ext.dart';
+import 'package:fedis/modules/login_screen/login_screen.dart';
 import 'package:fedis/shared/components/components.dart';
 import 'package:fedis/shared/styles/color.dart';
 import 'package:fedis/translations/locale_keys.g.dart';
@@ -27,6 +28,8 @@ class RegisterScreen extends StatelessWidget {
   var accountType = 'حساب فرد';
   var items = ['حساب شركة', 'حساب فرد'];
   var account = TextEditingController();
+
+  RegisterScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -407,7 +410,6 @@ class RegisterScreen extends StatelessWidget {
                         condition: state is! RegisterLoadingState,
                         builder: (context) => defalultButton(
                             function: () {
-                              // navigatepush(context, const HomeScreen());
                               if (formKey.currentState!.validate()) {
                                 RegisterCubit.get(context).userRegister(
                                   email: emailController.text,
@@ -424,7 +426,7 @@ class RegisterScreen extends StatelessWidget {
                                   accountType: accountType,
                                   nationalId: nationalIdController.text,
                                 );
-                                // navigatepush(context,  LoginScreen());
+                                navigateAndFinish(context,  LoginScreen());
 
                               }
                             },

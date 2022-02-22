@@ -2,9 +2,15 @@ const LOGIN = 'ValidateLogin';
 const REGISTER = 'AddClient';
 const GETCLIENT = 'GetClientsDetails';
 const RESETPASSWORD = 'ResetPassword';
+const GETINVOICES = 'GetInvoices';
+const GETINVOICEDETAILS = 'GetInvoice';
+const GETPAYMENTMETHODS = 'GetPaymentMethods';
+const GETACTIVESERVICES = 'GetOrders';
+const CHANGEPAYMENTMETHOD = 'UpdateInvoice';
 
+const DownloadInvoice = 'https://my.fedis.com.eg/dl.php?type=i&id=3';
 
-const URL = 'https://client.fedis.io/includes/api.php';
+const URL = 'https://my.fedis.com.eg/includes/api.php';
 
 // Authentication [identifier - secret ]
 const username = 'ZC4pUTwufIZTpOrg6tKa5UqQVBZ8QtGx';

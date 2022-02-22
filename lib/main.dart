@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:bloc/bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:fedis/modules/splash_screen/splash_screen.dart';
@@ -23,12 +22,13 @@ void main() async {
   late Widget widget;
   await CashHelper.init();
   clientId = CashHelper.getData(key: 'clientId');
-
-  print(clientId);
+  currentLanguage = CashHelper.getData(key: 'Language');
+  print('clientId :$clientId');
+  print('currentLanguage : $currentLanguage');
   if (clientId != null) {
-    widget = HomeScreen();
+    widget = const HomeScreen();
   } else {
-    widget = Splash();
+    widget = const Splash();
   }
   HttpOverrides.global = new MyHttpOverrides();
   runApp(localizedApp(widget));
@@ -42,12 +42,12 @@ class MyHttpOverrides extends HttpOverrides{
 }
 class MyApp extends StatelessWidget {
   final Widget? startWidget;
-  MyApp({this.startWidget});
+  const MyApp({Key? key, this.startWidget}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (BuildContext context) => HomeCubit()..getData())
+        BlocProvider(create: (BuildContext context) => HomeCubit()..getClientData())
       ],
       child: MaterialApp(
         builder: BotToastInit(),

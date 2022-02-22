@@ -39,5 +39,29 @@ abstract class  LocaleKeys {
   static const ResetPassword_Lost = 'ResetPassword_Lost';
   static const LostPassword_text = 'LostPassword_text';
   static const LostPassword_button = 'LostPassword_button';
+  static const InvoiceScreen_viewInvoiceButton = 'InvoiceScreen_viewInvoiceButton';
+  static const InvoiceScreen_noInvoiceText = 'InvoiceScreen_noInvoiceText';
+  static const Invoice_number = 'Invoice_number';
+  static const Invoice_dueDate = 'Invoice_dueDate';
+  static const Invoice_BankAccount = 'Invoice_BankAccount';
+  static const Invoice_TO = 'Invoice_TO';
+  static const Invoice_paymentWay = 'Invoice_paymentWay';
+  static const Invoice_date = 'Invoice_date';
+  static const Invoice_Items = 'Invoice_Items';
+  static const Invoice_details = 'Invoice_details';
+  static const Invoice_Amount = 'Invoice_Amount';
+  static const Invoice_subTotal = 'Invoice_subTotal';
+  static const Invoice_Credit = 'Invoice_Credit';
+  static const Invoice_total = 'Invoice_total';
+  static const Invoice_tax = 'Invoice_tax';
+  static const Invoice_totalDue = 'Invoice_totalDue';
+  static const Invoice_download = 'Invoice_download';
+  static const ActiveServices_noServiceText = 'ActiveServices_noServiceText';
+  static const ActiveService_cancelButton = 'ActiveService_cancelButton';
+  static const CancelService_Alert = 'CancelService_Alert';
+  static const CancelService_YesButton = 'CancelService_YesButton';
+  static const CancelService_NoButton = 'CancelService_NoButton';
+  static const Invoice_Currency = 'Invoice_Currency';
+  static const Invoice_payNowButton = 'Invoice_payNowButton';
 
 }

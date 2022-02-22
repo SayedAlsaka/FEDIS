@@ -1,4 +1,3 @@
-import 'package:bot_toast/bot_toast.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:easy_localization/src/public_ext.dart';
@@ -53,12 +52,11 @@ class LoginScreen extends StatelessWidget {
                     key: 'clientId', value: state.loginModel!.userId)
                 .then((value) {
               clientId = CashHelper.getData(key: 'clientId');
-              HomeCubit.get(context).getData();
-              navigateAndFinish(context, HomeScreen());
+              HomeCubit.get(context).getClientData();
+              navigateAndFinish(context, const HomeScreen());
             });
           }
           if (state is LoginErrorState) {
-            currentLanguage = CashHelper.getData(key: 'Language');
             if(currentLanguage == 'en')
             {
               Fluttertoast.showToast(
@@ -84,7 +82,7 @@ class LoginScreen extends StatelessWidget {
               actions: [
                 MaterialButton(
                   onPressed: () {
-                   navigateAndFinish(context,const Splash());
+                   //navigateAndFinish(context,const Splash());
                     formKey.currentState!.reset();
                      currentLanguage = CashHelper.getData(key: 'Language');
                     if (currentLanguage ==null)
@@ -177,7 +175,7 @@ class LoginScreen extends StatelessWidget {
                             height: 30,
                           ),
                           ConditionalBuilder(
-                            condition: state is! LoginLoadingState ,
+                            condition: state is! LoginLoadingState,
                             builder: (context) => defalultButton(
                                 function: () {
                                   if (formKey.currentState!.validate()) {
