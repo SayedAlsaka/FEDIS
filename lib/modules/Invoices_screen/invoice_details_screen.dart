@@ -358,8 +358,7 @@ var items = ['Bank/Cash','Offline Credit Card','fawry'];
                         const SizedBox(height: 20,),
                         Center(
                           child: MaterialButton(
-                            onPressed: (){
-                            },
+                            onPressed: () {},
                             child: Container(
                               padding: const EdgeInsets.all(10),
                               decoration: BoxDecoration(border: Border.all(color: defaultColor)),

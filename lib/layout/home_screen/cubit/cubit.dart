@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:bloc/bloc.dart';
+import 'package:dio/dio.dart';
 import 'package:fedis/layout/home_screen/cubit/states.dart';
 import 'package:fedis/models/active_services_model.dart';
 import 'package:fedis/models/client_response_model.dart';
@@ -12,8 +13,11 @@ import 'package:fedis/models/payment_methods.dart';
 import 'package:fedis/models/update_payment_method.dart';
 import 'package:fedis/shared/components/constants.dart';
 import 'package:fedis/shared/network/end_points.dart';
+import 'package:fedis/shared/network/remote/dio_helper.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
+import 'package:path_provider/path_provider.dart';
+import 'package:open_file/open_file.dart';
 class HomeCubit extends Cubit<HomeStates> {
   HomeCubit() : super(HomeInitialState());
 
@@ -62,6 +66,32 @@ void getClientData() async
     });
   }
 
+Future openFile({required String url, String? fileName}) async{
+
+  final file = await downloadFile(url, fileName!);
+  if(file ==null) return;
+  print('path: ${file.path}');
+  OpenFile.open(file.path);
+}
+Future<File?> downloadFile(String url , String name) async {
+
+  final appStorage= await getApplicationDocumentsDirectory();
+  final file= File('${appStorage.path}/$name');
+  try {
+    final response = await DioHelper.dio.download(
+        url,
+        file
+    );
+
+    // final raf = file.openSync(mode: FileMode.WRITE);
+    // raf.writeFromSync(response.data);
+    // await raf.close();
+    //
+    // return file;
+  } catch(e){
+    return null;
+  }
+}
 void getAllUnpaidInvoices() async
   {
     emit(HomeGetUnpaidInvoicesLoadingState());
