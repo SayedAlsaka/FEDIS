@@ -1,3 +1,5 @@
+
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:fedis/shared/components/constants.dart';
 import 'package:fedis/shared/network/local/cash_helper.dart';
@@ -113,6 +115,11 @@ Widget defaultFormField({
       onChanged: onChange as void Function(String)?,
     );
 
+void getPermission() async
+{
+  print('getPermission');
+
+}
 
 Widget defalultButton({
   double width = double.infinity,
