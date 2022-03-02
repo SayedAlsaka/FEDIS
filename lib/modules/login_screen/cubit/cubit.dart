@@ -5,6 +5,7 @@ import 'package:fedis/models/login_response_model.dart';
 import 'package:fedis/models/reset_response_model.dart';
 import 'package:fedis/modules/login_screen/cubit/states.dart';
 import 'package:fedis/shared/network/end_points.dart';
+import 'package:fedis/shared/network/local/cash_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
@@ -84,6 +85,30 @@ class LoginCubit extends Cubit<LoginStates> {
     emit(ChangePasswordShowState());
   }
 
+  bool? isSwitched;
+  void toggleSwitch() {
+    var language = CashHelper.getData(key: 'Language');
+    print(language);
+    if(language == 'ar') {
+      isSwitched =false;
+    }
+    if(language == 'en') {
+      isSwitched =true;
+    }
+    if(isSwitched == false)
+    {
+        isSwitched = true;
+        emit(ChangeLanguageSuccess());
+        print('Language is arabic');
+    }
+    else
+    {
+        isSwitched = false;
+        emit(ChangeLanguageSuccess());
+      print('Language is English');
+
+    }
+  }
   void changeLanguage(BuildContext context)
   async{
     emit(ChangeLoadingLanguage());

@@ -62,36 +62,36 @@ var items = ['Bank/Cash','Offline Credit Card','fawry'];
                     if (currentLanguage == 'en')
                       Container(
                       padding: const EdgeInsets.all(4),
-                      alignment: AlignmentDirectional.topEnd,
+                        color: defaultColor.withOpacity(0.7),
+                        width: 70,
                       child: Text(
                         HomeCubit.get(context).invoiceDetails.status,
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 20,
-                            backgroundColor: defaultColor.withOpacity(0.7),
                             color: Colors.white),
                       ),
                     ),
                     if(currentLanguage == 'ar' && HomeCubit.get(context).invoiceDetails.status == 'Unpaid')
                       Container(
                         padding: const EdgeInsets.all(4),
-                        alignment: AlignmentDirectional.topEnd,
-                        child: Text(
+                        color: defaultColor.withOpacity(0.7),
+                        width: 85,
+                        child: const Text(
                           'مستحقة',
                           style: TextStyle(
                               fontSize: 20,
-                              backgroundColor: defaultColor.withOpacity(0.7),
                               color: Colors.white),
                         ),
                       ),
                     if(currentLanguage == 'ar' && HomeCubit.get(context).invoiceDetails.status == 'Paid')
                       Container(
                         padding: const EdgeInsets.all(4),
-                        alignment: AlignmentDirectional.topEnd,
-                        child: Text(
+                        color: defaultColor.withOpacity(0.7),
+                        width: 85,
+                        child: const Text(
                           'مدفوعة',
                           style: TextStyle(
                               fontSize: 20,
-                              backgroundColor: defaultColor.withOpacity(0.7),
                               color: Colors.white),
                         ),
                       ),
@@ -115,7 +115,7 @@ var items = ['Bank/Cash','Offline Credit Card','fawry'];
                   if(HomeCubit.get(context).invoiceDetails.paymentmethod == HomeCubit.get(context).paymentMethods[1]
                       || HomeCubit.get(context).invoiceDetails.paymentmethod == HomeCubit.get(context).paymentMethodsDisplayName[1] )
                     Center(
-                      child: defalultButton(
+                      child: defaultButton(
                         width: 100,
                           isUpperCase: false,
                           function: (){},
@@ -358,7 +358,10 @@ var items = ['Bank/Cash','Offline Credit Card','fawry'];
                         const SizedBox(height: 20,),
                         Center(
                           child: MaterialButton(
-                            onPressed: () {},
+                            onPressed: () {
+
+
+                            },
                             child: Container(
                               padding: const EdgeInsets.all(10),
                               decoration: BoxDecoration(border: Border.all(color: defaultColor)),

@@ -8,7 +8,7 @@ const GETPAYMENTMETHODS = 'GetPaymentMethods';
 const GETACTIVESERVICES = 'GetOrders';
 const CHANGEPAYMENTMETHOD = 'UpdateInvoice';
 
-const DownloadInvoice = 'https://my.fedis.com.eg/dl.php?type=i&id=3';
+const DownloadInvoice = 'https://my.fedis.com.eg/dl.php?type=i&id=3.pdf';
 
 const URL = 'https://my.fedis.com.eg/includes/api.php';
 

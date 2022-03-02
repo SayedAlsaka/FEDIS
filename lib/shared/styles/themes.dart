@@ -17,10 +17,10 @@ ThemeData darkTheme = ThemeData(
                   ),
                   backgroundColor: HexColor('333739'),
                   elevation: 0.0,
-                  iconTheme: IconThemeData(
+                  iconTheme: const IconThemeData(
                     color: Colors.white,
                   ),
-                  titleTextStyle: TextStyle(
+                  titleTextStyle: const TextStyle(
                     fontFamily:'Jannah',
 
                     color: Colors.white,
@@ -37,7 +37,7 @@ ThemeData darkTheme = ThemeData(
                 elevation: 20.0,
                 backgroundColor: HexColor('333739'),
               ),
-              textTheme: TextTheme(
+              textTheme: const TextTheme(
                 bodyText1: TextStyle(
                   fontSize: 18.0,
                   fontWeight: FontWeight.w600,
@@ -57,7 +57,8 @@ ThemeData darkTheme = ThemeData(
 ThemeData lightTheme = ThemeData(
              
               scaffoldBackgroundColor: Colors.white,
-              appBarTheme: AppBarTheme(
+              snackBarTheme: const SnackBarThemeData(contentTextStyle: TextStyle(fontFamily: 'Tajawal')),
+              appBarTheme: const AppBarTheme(
                 titleSpacing: 20.0,
                 backwardsCompatibility: false,
                 systemOverlayStyle: SystemUiOverlayStyle(
@@ -70,17 +71,17 @@ ThemeData lightTheme = ThemeData(
                   color: Colors.black,
                 ),
                 titleTextStyle: TextStyle(
-                 fontFamily:'Jannah',
+                 fontFamily:'Tajawal',
                   color: Colors.black,
                   fontSize: 20.0,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              bottomNavigationBarTheme: BottomNavigationBarThemeData(
+              bottomNavigationBarTheme: const BottomNavigationBarThemeData(
                 type: BottomNavigationBarType.fixed,
                 selectedItemColor: defaultColor,
               ),
-              textTheme: TextTheme(
+              textTheme: const TextTheme(
                 bodyText1: TextStyle(
                   fontSize: 18.0,
                   fontWeight: FontWeight.w600,
@@ -93,6 +94,6 @@ ThemeData lightTheme = ThemeData(
                   height: 1.3,
                 ),
               ),
-              fontFamily:'Jannah',
+              fontFamily:'Tajawal',
 
             );

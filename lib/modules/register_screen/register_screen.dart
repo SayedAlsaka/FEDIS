@@ -408,7 +408,7 @@ class RegisterScreen extends StatelessWidget {
                       ),
                       ConditionalBuilder(
                         condition: state is! RegisterLoadingState,
-                        builder: (context) => defalultButton(
+                        builder: (context) => defaultButton(
                             function: () {
                               if (formKey.currentState!.validate()) {
                                 RegisterCubit.get(context).userRegister(

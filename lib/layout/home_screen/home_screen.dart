@@ -23,7 +23,8 @@ class HomeScreen extends StatelessWidget {
       },
       builder: (BuildContext context, Object? state) {
         return Scaffold(
-          appBar: AppBar(),
+          appBar: AppBar(
+          ),
           body: ConditionalBuilder(
             condition: state is! HomeGetClientDataLoadingState && state is! GetPaymentMethodLoadingState,
             builder: (BuildContext context) => SingleChildScrollView(
@@ -130,9 +131,10 @@ class HomeScreen extends StatelessWidget {
                                       Expanded(
                                         child: Row(
                                           mainAxisAlignment: MainAxisAlignment.end,
-                                          children: [
-                                            Image.asset(
-                                              'assets/images/file.png',
+                                          children: const [
+                                            Icon(
+                                              Icons.receipt_long_outlined,
+                                              size: 40.0,
                                               color: Colors.grey,
                                             ),
                                           ],
@@ -155,7 +157,7 @@ class HomeScreen extends StatelessWidget {
                                       ),
                                        Text(LocaleKeys.HomeScreen_pInvoices.tr(),
                                           style: const TextStyle(
-                                              fontSize: 25.0, color: Colors.grey)),
+                                              fontSize: 25.0, color: Colors.grey , fontWeight: FontWeight.bold)),
                                     ],
                                   ),
                                 ),
@@ -192,9 +194,10 @@ class HomeScreen extends StatelessWidget {
                                       Expanded(
                                         child: Row(
                                           mainAxisAlignment: MainAxisAlignment.end,
-                                          children: [
-                                            Image.asset(
-                                              'assets/images/file.png',
+                                          children: const [
+                                            Icon(
+                                              Icons.receipt_long_outlined,
+                                              size: 40.0,
                                               color: Colors.grey,
                                             ),
                                           ],
@@ -217,7 +220,7 @@ class HomeScreen extends StatelessWidget {
                                       ),
                                        Text(LocaleKeys.HomeScreen_unpInvoices.tr(),
                                           style: const TextStyle(
-                                              fontSize: 25.0, color: Colors.grey)),
+                                              fontSize: 25.0, color: Colors.grey, fontWeight: FontWeight.bold)),
                                     ],
                                   ),
                                 ),
@@ -255,11 +258,12 @@ class HomeScreen extends StatelessWidget {
                                       Expanded(
                                         child: Row(
                                           mainAxisAlignment: MainAxisAlignment.end,
-                                          children: [
-                                            Image.asset(
-                                              'assets/images/cube.png',
-                                              color: Colors.grey[500],
-                                            ),
+                                          children: const [
+                                              Icon(
+                                                Icons.view_in_ar_outlined,
+                                                size: 40.0,
+                                                color: Colors.grey,
+                                              ),
                                           ],
                                         ),
                                       ),
@@ -280,7 +284,7 @@ class HomeScreen extends StatelessWidget {
                                       ),
                                        Text(LocaleKeys.HomeScreen_producsActive.tr(),
                                           style: const TextStyle(
-                                              fontSize: 25.0, color: Colors.grey)),
+                                              fontSize: 25.0, color: Colors.grey, fontWeight: FontWeight.bold)),
                                     ],
                                   ),
                                 ),

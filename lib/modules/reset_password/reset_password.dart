@@ -80,7 +80,7 @@ class ResetPassword extends StatelessWidget {
                               height: 30,
                             ),
                             Center(
-                              child: defalultButton(
+                              child: defaultButton(
                                 width: 100,
                                 function: () {
                                   if (formKey.currentState!.validate()) {

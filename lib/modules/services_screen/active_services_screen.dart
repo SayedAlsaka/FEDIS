@@ -104,7 +104,7 @@ class ActiveServicesScreen extends StatelessWidget {
                                               Row(
                                                 children: [
                                                   const Icon(
-                                                    Icons.indeterminate_check_box_outlined,
+                                                    Icons.cancel_outlined,
                                                     color: Colors.red,
                                                     size: 20,
                                                   ),
@@ -128,7 +128,7 @@ class ActiveServicesScreen extends StatelessWidget {
                                               Row(
                                                 children: const [
                                                   Icon(
-                                                    Icons.indeterminate_check_box_outlined,
+                                                    Icons.cancel_outlined,
                                                     color: Colors.red,
                                                     size: 20,
                                                   ),
@@ -153,7 +153,7 @@ class ActiveServicesScreen extends StatelessWidget {
                                               Row(
                                                 children: [
                                                   const Icon(
-                                                    Icons.indeterminate_check_box_outlined,
+                                                    Icons.cancel_outlined,
                                                     color: Colors.redAccent,
                                                     size: 20,
                                                   ),
@@ -177,7 +177,7 @@ class ActiveServicesScreen extends StatelessWidget {
                                               Row(
                                                 children: const [
                                                   Icon(
-                                                    Icons.indeterminate_check_box_outlined,
+                                                    Icons.cancel_outlined,
                                                     color: Colors.redAccent,
                                                     size: 20,
                                                   ),
