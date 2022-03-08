@@ -2,12 +2,14 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:fedis/modules/login_screen/login_screen.dart';
 import 'package:fedis/shared/components/components.dart';
+import 'package:fedis/shared/components/constants.dart';
 import 'package:fedis/shared/styles/color.dart';
 import 'package:fedis/translations/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
-
+import 'package:country_picker/country_picker.dart';
+import '../../shared/network/local/cash_helper.dart';
 import 'cubit/cubit.dart';
 import 'cubit/states.dart';
 
@@ -26,7 +28,7 @@ class RegisterScreen extends StatelessWidget {
   var lastNameController = TextEditingController();
   var nationalIdController = TextEditingController();
   var accountType = 'حساب فرد';
-  var items = ['حساب شركة', 'حساب فرد'];
+  var items = ['حساب فرد', 'حساب شركة'];
   var account = TextEditingController();
 
   RegisterScreen({Key? key}) : super(key: key);
@@ -35,7 +37,47 @@ class RegisterScreen extends StatelessWidget {
     return BlocProvider(
       create: (BuildContext context) => RegisterCubit(),
       child: BlocConsumer<RegisterCubit, RegisterStates>(
-        listener: (BuildContext context, state) {},
+        listener: (BuildContext context, state) {
+          if (state is SelectCountryState)
+            {
+              countryController.text = RegisterCubit.get(context).countryName!;
+            }
+          if (state is RegisterSuccessState)
+            {
+              currentLanguage = CashHelper.getData(key: 'Language');
+              if (currentLanguage == 'en') {
+                ScaffoldMessenger.of(context).showSnackBar(
+                    snackBar(
+                        msg: 'Register ${state.registerResponseModel!.result}fully',
+                        state: ToastStates.SUCCESS)
+                );
+              } else if (currentLanguage == 'ar') {
+                ScaffoldMessenger.of(context).showSnackBar(
+                    snackBar(
+                        msg: 'تم التسجيل بنجاح',
+                        state: ToastStates.SUCCESS)
+                );
+              }
+              navigateAndFinish(context,  LoginScreen());
+            }
+          if (state is RegisterErrorState)
+            {
+              currentLanguage = CashHelper.getData(key: 'Language');
+              if (currentLanguage == 'en') {
+                ScaffoldMessenger.of(context).showSnackBar(
+                    snackBar(
+                        msg: state.registerResponseModel!.message.toString(),
+                        state: ToastStates.ERROR)
+                );
+              } else if (currentLanguage == 'ar') {
+                ScaffoldMessenger.of(context).showSnackBar(
+                    snackBar(
+                        msg: 'يوجد مستخدم بالفعل بعنوان البريد الإلكتروني هذا',
+                        state: ToastStates.ERROR)
+                );
+              }
+            }
+        },
         builder: (BuildContext context, Object? state) {
           return Scaffold(
             appBar: AppBar(),
@@ -136,9 +178,6 @@ class RegisterScreen extends StatelessWidget {
                       IntlPhoneField(
                         cursorColor: Colors.black,
                         controller: phoneController,
-                        onCountryChanged: (country) {
-                          countryController.text = country.code;
-                        },
                         autovalidateMode: AutovalidateMode.disabled,
                         validator: (String? value) {
                           if (value!.isEmpty) {
@@ -172,41 +211,36 @@ class RegisterScreen extends StatelessWidget {
                         initialCountryCode: 'EG',
                       ),
                       // const SizedBox(height: 15,),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          SizedBox(
-                            width: 200,
-                            child: defaultFormField(
-                              controller: companyNameController,
-                              type: TextInputType.text,
-                              contentPadding: const EdgeInsets.symmetric(
-                                  vertical: 10, horizontal: 10),
-                              validate: null,
-                              label: LocaleKeys.RegisterScreen_company.tr(),
-                              picon: Icons.business,
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 5,
-                          ),
-                          Expanded(
-                            child: defaultFormField(
-                              controller: countryController,
-                              type: TextInputType.text,
-                              contentPadding: const EdgeInsets.symmetric(
-                                  vertical: 10, horizontal: 10),
-                              validate: (String? value) {
-                                if (value!.isEmpty) {
-                                  return LocaleKeys.RegisterScreen_Validate.tr();
-                                }
-                                return null;
-                              },
-                              label: LocaleKeys.RegisterScreen_country.tr(),
-                              picon: Icons.location_city,
-                            ),
-                          ),
-                        ],
+                      defaultFormField(
+                        controller: companyNameController,
+                        type: TextInputType.text,
+                        contentPadding: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 10),
+                        validate: null,
+                        label: LocaleKeys.RegisterScreen_company.tr(),
+                        picon: Icons.business,
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      defaultFormField(
+                          controller: countryController,
+                          type: TextInputType.text,
+                          contentPadding: const EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 10),
+                          validate: (String? value) {
+                            if (value!.isEmpty) {
+                              return LocaleKeys.RegisterScreen_Validate.tr();
+                            }
+                            return null;
+                          },
+                          label: LocaleKeys.RegisterScreen_country.tr(),
+                          picon: Icons.location_city,
+                          sicon: Icons.arrow_drop_down,
+                          suffixPressed: (){
+                            RegisterCubit.get(context).showCountryList(context);
+                          }
+
                       ),
                       const SizedBox(
                         height: 15,
@@ -241,7 +275,8 @@ class RegisterScreen extends StatelessWidget {
                                   vertical: 10, horizontal: 10),
                               validate: (String? value) {
                                 if (value!.isEmpty) {
-                                  return LocaleKeys.RegisterScreen_Validate.tr();
+                                  return LocaleKeys.RegisterScreen_Validate
+                                      .tr();
                                 }
                                 return null;
                               },
@@ -371,10 +406,10 @@ class RegisterScreen extends StatelessWidget {
                           if (value!.isEmpty) {
                             return LocaleKeys.RegisterScreen_Validate.tr();
                           }
-                          if(value.length < 14)
-                            {
-                              return LocaleKeys.RegisterScreen_nationalIDValidate.tr();
-                            }
+                          if (value.length < 14) {
+                            return LocaleKeys.RegisterScreen_nationalIDValidate
+                                .tr();
+                          }
                           return null;
                         },
                         label: LocaleKeys.RegisterScreen_ID.tr(),
@@ -426,8 +461,7 @@ class RegisterScreen extends StatelessWidget {
                                   accountType: accountType,
                                   nationalId: nationalIdController.text,
                                 );
-                                navigateAndFinish(context,  LoginScreen());
-
+                                // navigateAndFinish(context, LoginScreen());
                               }
                             },
                             text: LocaleKeys.RegisterScreen_button.tr(),

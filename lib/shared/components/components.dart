@@ -1,11 +1,14 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:fedis/models/menu_item.dart';
 import 'package:fedis/shared/components/constants.dart';
 import 'package:fedis/shared/network/local/cash_helper.dart';
 import 'package:fedis/shared/styles/color.dart';
 import 'package:fedis/translations/codegen_loader.g.dart';
+import 'package:fedis/translations/locale_keys.g.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import '../../main.dart';
+
 
 void navigatePush(context, widget) => Navigator.push(
       context,
@@ -52,7 +55,7 @@ Widget localizedApp(Widget widget) {
 }
 
 Widget defaultFormField({
-  required TextEditingController controller,
+   TextEditingController? controller,
   required TextInputType type,
   String? Function(String?)? validate,
   String? label,
@@ -67,8 +70,10 @@ Widget defaultFormField({
   EdgeInsets? contentPadding,
   String? hint,
   TextStyle? style,
+  String? value,
 }) =>
     TextFormField(
+      initialValue: value,
       textCapitalization: TextCapitalization.sentences,
       controller: controller,
       obscureText: isPassword,

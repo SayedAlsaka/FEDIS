@@ -63,5 +63,26 @@ abstract class  LocaleKeys {
   static const CancelService_NoButton = 'CancelService_NoButton';
   static const Invoice_Currency = 'Invoice_Currency';
   static const Invoice_payNowButton = 'Invoice_payNowButton';
+  static const HomeScreen_menuCustomerInfo = 'HomeScreen_menuCustomerInfo';
+  static const HomeScreen_PaymentMethods = 'HomeScreen_PaymentMethods';
+  static const HomeScreen_PersonalFile = 'HomeScreen_PersonalFile';
+  static const HomeScreen_ChangePassword = 'HomeScreen_ChangePassword';
+  static const HomeScreen_SignOut = 'HomeScreen_SignOut';
+  static const customerData_title = 'customerData_title';
+  static const customerData_fname = 'customerData_fname';
+  static const customerData_lname = 'customerData_lname';
+  static const customerData_companyName = 'customerData_companyName';
+  static const customerData_email = 'customerData_email';
+  static const CutomerData_address = 'CutomerData_address';
+  static const customerData_city = 'customerData_city';
+  static const customerData_state = 'customerData_state';
+  static const customerData_postCode = 'customerData_postCode';
+  static const customerData_country = 'customerData_country';
+  static const customerData_mobileNumber = 'customerData_mobileNumber';
+  static const customerData_defaultGateway = 'customerData_defaultGateway';
+  static const customerData_vatNumber = 'customerData_vatNumber';
+  static const customerData_accountType = 'customerData_accountType';
+  static const customerData_address = 'customerData_address';
+  static const customerData_saveChanges = 'customerData_saveChanges';
 
 }

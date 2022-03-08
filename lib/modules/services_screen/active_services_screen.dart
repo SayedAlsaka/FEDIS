@@ -16,8 +16,7 @@ class ActiveServicesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<HomeCubit,HomeStates>(
-      listener: (BuildContext context, state) {
-      },
+      listener: (BuildContext context, state) {},
       builder: (BuildContext context, Object? state) {
       if(HomeCubit.get(context).totalActiveServices == null) {
         return Scaffold(

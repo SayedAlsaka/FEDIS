@@ -14,6 +14,9 @@ import 'package:fedis/shared/network/end_points.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
 
+import '../../../models/reset_response_model.dart';
+
+
 class HomeCubit extends Cubit<HomeStates> {
   HomeCubit() : super(HomeInitialState());
 
@@ -28,14 +31,14 @@ class HomeCubit extends Cubit<HomeStates> {
   late ActiveServiceModel activeServiceModel;
   late NoActiveServiceModel noActiveServiceModel;
   late ChangePaymentModel changePaymentModel;
+  late ResetResponseModel updateClientModel;
   int? totalInvoices;
   int? totalActiveServices;
   bool allowWriteFile=false;
   var paymentMethods = [];
   var paymentMethodsDisplayName = [];
-
 void getClientData() async
-  {
+{
     emit(HomeGetClientDataLoadingState());
     var url = Uri.parse(URL);
     final response = await  http.post(Uri.parse(URL) , body: {
@@ -47,23 +50,22 @@ void getClientData() async
       'responsetype':'json',
       'stats':'${true}',
     }).then((value) {
-      clientModel = ClientModel.fromJson(json.decode(value.body));
-      print(clientModel.result);
-      if (clientModel.result == 'success') {
-        emit(HomeGetClientDataSuccessState(clientModel));
-        getPaymentMethod();
-      } else {
-        emit(HomeGetClientDataErrorState(clientModel));
-      }
-
+        clientModel = ClientModel.fromJson(json.decode(value.body));
+        print(clientModel.result);
+        if (clientModel.result == 'success') {
+          emit(HomeGetClientDataSuccessState(clientModel));
+          getPaymentMethod();
+        } else {
+          emit(HomeGetClientDataErrorState());
+        }
     }).catchError((error){
       print(error.toString());
-      emit(HomeGetClientDataErrorState(error));
+      emit(HomeGetClientDataErrorState());
     });
   }
 
 void getAllUnpaidInvoices() async
-  {
+{
     emit(HomeGetUnpaidInvoicesLoadingState());
     var url = Uri.parse(URL);
     final response = await  http.post(Uri.parse(URL) , body: {
@@ -220,7 +222,7 @@ emit(GetPaymentMethodErrorState());
 }
 
 void getActiveServices() async
-  {
+{
     emit(GetActiveServicesLoadingState());
     var url = Uri.parse(URL);
      final response = await  http.post(Uri.parse(URL) , body: {
@@ -264,8 +266,8 @@ void getActiveServices() async
     });
   }
 
-  void changePaymentMethod(payMethod,invoiceID) async
-  {
+void changePaymentMethod(payMethod,invoiceID) async
+{
 
     emit(ChangePaymentMethodLoadingState());
     var url = Uri.parse(URL);
@@ -298,6 +300,38 @@ void getActiveServices() async
     });
   }
 
-
-
+void updateClient({
+  required String state,
+  required String postCode,
+  required String vatNumber,
+  required String accountType,
+}) async
+{
+  emit(UpdateClientLoadingState());
+  var url = Uri.parse(URL);
+  final response = await  http.post(Uri.parse(URL) , body: {
+    'action': UPDATECLIENT,
+    'username': username,
+    'password': passwordA,
+    'accesskey': passwordA,
+    'clientid': '$clientId',
+    'state':state,
+    'postcode':postCode,
+    'tax_id':vatNumber,
+    'customfields1':accountType,
+    'responsetype':'json',
+  }).then((value) {
+    updateClientModel = ResetResponseModel.fromJson(json.decode(value.body));
+    print(updateClientModel.result);
+    if (updateClientModel.result == 'success') {
+      emit(UpdateClientSuccessState());
+      getClientData();
+    } else {
+      emit(UpdateClientErrorState());
+    }
+  }).catchError((error){
+    print(error.toString());
+    emit(UpdateClientErrorState());
+  });
+}
 }

@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:bloc/bloc.dart';
+import 'package:country_picker/country_picker.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:fedis/modules/splash_screen/splash_screen.dart';
 import 'package:fedis/shared/bloc_observer.dart';

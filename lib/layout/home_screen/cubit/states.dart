@@ -15,12 +15,7 @@ class HomeGetClientDataSuccessState extends HomeStates
   HomeGetClientDataSuccessState(this.clientModel);
 }
 
-class HomeGetClientDataErrorState extends HomeStates
-{
-  final  ClientModel? clientModel;
-
-  HomeGetClientDataErrorState(this.clientModel);
-}
+class HomeGetClientDataErrorState extends HomeStates {}
 
 class HomeGetUnpaidInvoicesLoadingState extends HomeStates{}
 
@@ -57,3 +52,13 @@ class ChangePaymentMethodLoadingState extends HomeStates{}
 class ChangePaymentMethodSuccessState extends HomeStates {}
 
 class ChangePaymentMethodErrorState extends HomeStates {}
+
+class ChangeDropMenuSuccessState extends HomeStates {}
+
+class ChangeDropMenuErrorState extends HomeStates {}
+
+class UpdateClientLoadingState extends HomeStates{}
+
+class UpdateClientSuccessState extends HomeStates {}
+
+class UpdateClientErrorState extends HomeStates {}

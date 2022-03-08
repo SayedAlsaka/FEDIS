@@ -7,6 +7,7 @@ const GETINVOICEDETAILS = 'GetInvoice';
 const GETPAYMENTMETHODS = 'GetPaymentMethods';
 const GETACTIVESERVICES = 'GetOrders';
 const CHANGEPAYMENTMETHOD = 'UpdateInvoice';
+const UPDATECLIENT = 'UpdateClient';
 
 const DownloadInvoice = 'https://my.fedis.com.eg/dl.php?type=i&id=3.pdf';
 

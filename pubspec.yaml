@@ -38,9 +38,6 @@ dependencies:
   flutter_bloc: ^7.2.0
   bloc: ^7.1.0
   dio: ^4.0.3
-  path_provider: ^2.0.9
-  open_file: ^3.2.1
-  file_picker: ^4.5.0
   flutter_switch: ^0.3.2
   http: ^0.13.4
   shared_preferences: ^2.0.12
@@ -48,7 +45,7 @@ dependencies:
   conditional_builder_null_safety: ^0.0.6
   hexcolor: ^2.0.3
   intl_phone_field: ^3.0.1
-  country_picker: ^2.0.10
+  country_picker: ^2.0.12
   splash_screen_view: ^3.0.0
   bot_toast: ^4.0.1
   rflutter_alert: ^2.0.4
